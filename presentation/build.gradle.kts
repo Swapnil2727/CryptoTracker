@@ -1,5 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -7,6 +10,7 @@ android {
     compileSdk {
         version = release(36)
     }
+    buildFeatures { compose = true }
 
     defaultConfig {
         minSdk = 29
@@ -33,10 +37,14 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.compose.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(projects.domain)
+    // hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose) // Essential for hiltViewModel()
+    ksp(libs.hilt.compiler)
 }

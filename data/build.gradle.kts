@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -33,7 +35,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.compose.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -42,4 +44,7 @@ dependencies {
     //Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
+    // hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }
