@@ -1,4 +1,4 @@
-package com.app.domain
+package com.app.domain.model
 
 data class CryptoCurrency(
     val id: String,

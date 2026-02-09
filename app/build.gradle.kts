@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -11,6 +13,11 @@ android {
         version = release(36)
     }
 
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "com.app.cryptotracker"
         minSdk = 29
@@ -19,6 +26,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        //API key Configuration
+        val localProperties = Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use { stream ->
+                localProperties.load(stream)
+            }
+        }
+        val apiKey = localProperties.getProperty("COINGECKO_API_KEY") ?: throw Exception ("Api key not provied")
+        buildConfigField("String", "COINGECKO_API_KEY", "\"$apiKey\"")
     }
 
     buildTypes {
@@ -33,9 +52,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    buildFeatures {
-        compose = true
     }
 }
 
@@ -59,4 +75,9 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    // domain, data, presentation
+    implementation(projects.data)
+    implementation(projects.domain)
+    implementation(projects.presentation)
 }
