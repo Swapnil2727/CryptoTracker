@@ -30,6 +30,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -41,10 +45,22 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(projects.domain)
-    //Koin
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.core)
     // hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+
+    // Networking
+    implementation(libs.moshi)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.codegen)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+
 }
