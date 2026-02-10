@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.parcelize)
 }
 
@@ -37,7 +36,8 @@ android {
                 localProperties.load(stream)
             }
         }
-        val apiKey = localProperties.getProperty("COINGECKO_API_KEY") ?: throw Exception ("Api key not provied")
+        val apiKey = localProperties.getProperty("COINGECKO_API_KEY")
+            ?: throw Exception("Api key not provied")
         buildConfigField("String", "COINGECKO_API_KEY", "\"$apiKey\"")
     }
 
@@ -73,9 +73,9 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    //hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    // Koin
+    implementation(libs.koin.android)
+    implementation(platform(libs.koin.bom))
 
     // domain, data, presentation
     implementation(projects.data)

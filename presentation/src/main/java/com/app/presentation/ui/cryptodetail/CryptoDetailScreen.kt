@@ -13,12 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.presentation.R
 import com.app.presentation.model.CryptoDetailState
 import com.app.presentation.viewmodel.cryptodetail.CryptoDetailViewModel
 import dev.enro.annotations.NavigationDestination
+import org.koin.compose.viewmodel.koinViewModel
 
 /**
  * Detail screen showing comprehensive information about a single cryptocurrency.
@@ -35,7 +35,7 @@ import dev.enro.annotations.NavigationDestination
 @Composable
 @NavigationDestination(CryptoDetailDestination::class)
 fun CryptoDetailScreen(
-    viewModel: CryptoDetailViewModel = hiltViewModel()
+    viewModel: CryptoDetailViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 

@@ -6,14 +6,12 @@ import com.app.domain.model.Result
 import com.app.domain.repository.CryptoRepository
 import com.app.presentation.model.CryptoDetailState
 import com.app.presentation.ui.cryptodetail.CryptoDetailDestination
-import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.enro.core.close
 import dev.enro.viewmodel.navigationHandle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * ViewModel for the Crypto Detail screen.
@@ -24,8 +22,7 @@ import javax.inject.Inject
  * - Handle user actions (retry)
  * - Survive configuration changes
  */
-@HiltViewModel
-class CryptoDetailViewModel @Inject constructor(
+class CryptoDetailViewModel(
     private val cryptoRepository: CryptoRepository,
 ) : ViewModel() {
 

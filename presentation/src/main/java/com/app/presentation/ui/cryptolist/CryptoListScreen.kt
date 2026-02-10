@@ -1,4 +1,4 @@
-package com.yourpackage.presentation.screen
+package com.app.presentation.ui.cryptolist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,16 +39,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.app.domain.model.CryptoCurrency
 import com.app.presentation.model.CryptoListState
 import com.app.presentation.theme.CryptoTrackerTheme
-import com.app.presentation.ui.cryptolist.CryptoListDestination
 import com.app.presentation.ui.util.previewCryptoList
 import com.app.presentation.viewmodel.cryptolist.CryptoListViewModel
 import dev.enro.annotations.NavigationDestination
+import org.koin.compose.viewmodel.koinViewModel
 import java.util.Locale
 
 /**
@@ -65,7 +64,7 @@ import java.util.Locale
 @Composable
 @NavigationDestination(CryptoListDestination::class)
 fun CryptoListScreen(
-    viewModel: CryptoListViewModel = hiltViewModel()
+    viewModel: CryptoListViewModel = koinViewModel()
 ) {
     // Collect state from ViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()

@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.parcelize)
 }
 
@@ -47,10 +46,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(projects.domain)
-    // hilt
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose) // Essential for hiltViewModel()
-    ksp(libs.hilt.compiler)
+    //Koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose.viewmodel)
+
     //coil
     implementation(libs.coil.compose)
 
