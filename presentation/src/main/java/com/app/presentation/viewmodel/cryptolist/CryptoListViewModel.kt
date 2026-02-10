@@ -5,7 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.app.domain.model.Result
 import com.app.domain.repository.CryptoRepository
 import com.app.presentation.model.CryptoListState
+import com.app.presentation.ui.cryptodetail.CryptoDetailDestination
+import com.app.presentation.ui.cryptolist.CryptoListDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.enro.core.NavigationHandle
+import dev.enro.core.push
+import dev.enro.viewmodel.navigationHandle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,6 +30,8 @@ import javax.inject.Inject
 class CryptoListViewModel @Inject constructor(
     private val cryptoRepository: CryptoRepository,
 ) : ViewModel() {
+
+   private val navigation by navigationHandle<CryptoListDestination>()
 
     // Private mutable state - only ViewModel can change it
     private val _state = MutableStateFlow<CryptoListState>(CryptoListState.Loading)
@@ -90,5 +97,9 @@ class CryptoListViewModel @Inject constructor(
      */
     fun onRetry() {
         loadCryptoCurrencies(forceRefresh = true)
+    }
+
+    fun onCryptoClick(id: String) {
+        navigation.push(CryptoDetailDestination(id))
     }
 }

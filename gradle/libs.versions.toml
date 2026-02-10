@@ -19,6 +19,7 @@ okhttp = "5.3.2"
 room = "2.8.4"
 coroutines = "1.10.2"
 coil = "2.7.0"
+enro = "2.8.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -62,9 +63,16 @@ coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 # Image Loading
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
+# Enro Navigation
+enro-core = { group = "dev.enro", name = "enro", version.ref = "enro" }
+enro-processor = { group = "dev.enro", name = "enro-processor", version.ref = "enro" }
+enro-test = { group = "dev.enro", name = "enro-test", version.ref = "enro" }
+# enro-compat = {group = "dev.enro", name = "enro-compat", version.ref = "enro"}
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }

@@ -18,6 +18,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.presentation.R
 import com.app.presentation.model.CryptoDetailState
 import com.app.presentation.viewmodel.cryptodetail.CryptoDetailViewModel
+import dev.enro.annotations.NavigationDestination
 
 /**
  * Detail screen showing comprehensive information about a single cryptocurrency.
@@ -32,9 +33,8 @@ import com.app.presentation.viewmodel.cryptodetail.CryptoDetailViewModel
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+@NavigationDestination(CryptoDetailDestination::class)
 fun CryptoDetailScreen(
-    cryptoId: String,
-    onNavigateBack: () -> Unit,
     viewModel: CryptoDetailViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -44,11 +44,10 @@ fun CryptoDetailScreen(
             TopAppBar(
                 title = { Text("Crypto Details") },
                 navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
+                    IconButton(onClick = viewModel::onBackClick) {
                         Icon(
                             painter = painterResource(R.drawable.arrow_back),
                             contentDescription = "Navigate back"
-
                         )
                     }
                 },

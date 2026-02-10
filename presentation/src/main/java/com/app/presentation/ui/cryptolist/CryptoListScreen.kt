@@ -45,8 +45,10 @@ import coil.compose.AsyncImage
 import com.app.domain.model.CryptoCurrency
 import com.app.presentation.model.CryptoListState
 import com.app.presentation.theme.CryptoTrackerTheme
+import com.app.presentation.ui.cryptolist.CryptoListDestination
 import com.app.presentation.ui.util.previewCryptoList
 import com.app.presentation.viewmodel.cryptolist.CryptoListViewModel
+import dev.enro.annotations.NavigationDestination
 import java.util.Locale
 
 /**
@@ -61,8 +63,8 @@ import java.util.Locale
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+@NavigationDestination(CryptoListDestination::class)
 fun CryptoListScreen(
-    onCryptoClick: (String) -> Unit,
     viewModel: CryptoListViewModel = hiltViewModel()
 ) {
     // Collect state from ViewModel
@@ -95,7 +97,7 @@ fun CryptoListScreen(
                     cryptos = currentState.cryptos,
                     isRefreshing = currentState.isRefreshing,
                     onRefresh = viewModel::onRefresh,
-                    onCryptoClick = onCryptoClick,
+                    onCryptoClick = viewModel::onCryptoClick,
                     modifier = Modifier.padding(paddingValues)
                 )
             }

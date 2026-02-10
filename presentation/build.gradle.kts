@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -52,4 +53,9 @@ dependencies {
     ksp(libs.hilt.compiler)
     //coil
     implementation(libs.coil.compose)
+
+    // Navigation
+    implementation(libs.enro.core)
+    ksp(libs.enro.processor)
+    testImplementation(libs.enro.test)
 }

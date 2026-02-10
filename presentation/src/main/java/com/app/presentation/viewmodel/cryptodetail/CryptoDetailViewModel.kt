@@ -1,12 +1,14 @@
 package com.app.presentation.viewmodel.cryptodetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.domain.model.Result
 import com.app.domain.repository.CryptoRepository
 import com.app.presentation.model.CryptoDetailState
+import com.app.presentation.ui.cryptodetail.CryptoDetailDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.enro.core.close
+import dev.enro.viewmodel.navigationHandle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,10 +27,9 @@ import javax.inject.Inject
 @HiltViewModel
 class CryptoDetailViewModel @Inject constructor(
     private val cryptoRepository: CryptoRepository,
-    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    // Extract cryptoId from navigation arguments
+    private val navigation by navigationHandle<CryptoDetailDestination>()
 
     // Private mutable state
     private val _state = MutableStateFlow<CryptoDetailState>(CryptoDetailState.Loading)
@@ -46,7 +47,7 @@ class CryptoDetailViewModel @Inject constructor(
      */
     private fun loadCryptoDetail() {
         viewModelScope.launch {
-            cryptoRepository.getCryptoCurrencyById("").collect { result ->
+            cryptoRepository.getCryptoCurrencyById(navigation.key.cryptoId).collect { result ->
                 _state.value = when (result) {
                     is Result.Loading -> CryptoDetailState.Loading
 
@@ -65,5 +66,9 @@ class CryptoDetailViewModel @Inject constructor(
      */
     fun onRetry() {
         loadCryptoDetail()
+    }
+
+    fun onBackClick() {
+        navigation.close()
     }
 }
