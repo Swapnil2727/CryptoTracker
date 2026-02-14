@@ -46,7 +46,6 @@ import com.app.presentation.model.CryptoListState
 import com.app.presentation.theme.CryptoTrackerTheme
 import com.app.presentation.ui.util.previewCryptoList
 import com.app.presentation.viewmodel.cryptolist.CryptoListViewModel
-import dev.enro.annotations.NavigationDestination
 import org.koin.compose.viewmodel.koinViewModel
 import java.util.Locale
 
@@ -62,9 +61,9 @@ import java.util.Locale
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@NavigationDestination(CryptoListDestination::class)
 fun CryptoListScreen(
-    viewModel: CryptoListViewModel = koinViewModel()
+    viewModel: CryptoListViewModel = koinViewModel(),
+    onCryptoClick: (String) -> Unit,
 ) {
     // Collect state from ViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -96,7 +95,7 @@ fun CryptoListScreen(
                     cryptos = currentState.cryptos,
                     isRefreshing = currentState.isRefreshing,
                     onRefresh = viewModel::onRefresh,
-                    onCryptoClick = viewModel::onCryptoClick,
+                    onCryptoClick = onCryptoClick,
                     modifier = Modifier.padding(paddingValues)
                 )
             }

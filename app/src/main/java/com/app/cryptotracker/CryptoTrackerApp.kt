@@ -1,25 +1,21 @@
 package com.app.cryptotracker
 
 import android.app.Application
+import com.app.cryptotracker.di.appModule
 import com.app.data.di.databaseModule
+import com.app.data.di.networkModule
 import com.app.data.di.repositoryModule
 import com.app.presentation.viewmodel.di.viewModelModule
-import dev.enro.annotations.NavigationComponent
-import dev.enro.core.controller.NavigationApplication
-import dev.enro.core.controller.createNavigationController
-import networkModule
 import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.GlobalContext.startKoin
-import org.koin.core.module.KoinApplicationDslMarker
+import org.koin.core.context.startKoin
 
-
-@NavigationComponent
-class CryptoTrackerApp() : Application(), NavigationApplication {
+class CryptoTrackerApp() : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidContext(this@CryptoTrackerApp)
             modules(
+                appModule,
                 networkModule,
                 databaseModule,
                 repositoryModule,
@@ -27,6 +23,4 @@ class CryptoTrackerApp() : Application(), NavigationApplication {
             )
         }
     }
-
-    override val navigationController = createNavigationController {}
 }

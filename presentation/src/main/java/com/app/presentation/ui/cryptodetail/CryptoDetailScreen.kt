@@ -17,7 +17,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.presentation.R
 import com.app.presentation.model.CryptoDetailState
 import com.app.presentation.viewmodel.cryptodetail.CryptoDetailViewModel
-import dev.enro.annotations.NavigationDestination
 import org.koin.compose.viewmodel.koinViewModel
 
 /**
@@ -33,9 +32,9 @@ import org.koin.compose.viewmodel.koinViewModel
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@NavigationDestination(CryptoDetailDestination::class)
 fun CryptoDetailScreen(
-    viewModel: CryptoDetailViewModel = koinViewModel()
+    viewModel: CryptoDetailViewModel = koinViewModel(),
+    onBackClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -44,7 +43,7 @@ fun CryptoDetailScreen(
             TopAppBar(
                 title = { Text("Crypto Details") },
                 navigationIcon = {
-                    IconButton(onClick = viewModel::onBackClick) {
+                    IconButton(onClick = onBackClick) {
                         Icon(
                             painter = painterResource(R.drawable.arrow_back),
                             contentDescription = "Navigate back"

@@ -55,7 +55,10 @@ dependencies {
     implementation(libs.coil.compose)
 
     // Navigation
-    implementation(libs.enro.core)
-    ksp(libs.enro.processor)
-    testImplementation(libs.enro.test)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.koin.compose.navigation3)
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+
 }

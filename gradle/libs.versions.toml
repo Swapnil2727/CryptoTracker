@@ -4,6 +4,7 @@ coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
+kotlinxSerializationCore = "1.10.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.3"
 kotlin = "2.3.10"
@@ -17,8 +18,10 @@ okhttp = "5.3.2"
 room = "2.8.4"
 coroutines = "1.10.2"
 coil = "2.7.0"
-enro = "2.8.7"
-koin-bom = "4.0.0"
+koin-bom = "4.2.0-RC1"
+kotlinSerialization = "2.2.21"
+nav3Core = "1.0.0"
+lifecycleViewmodelNav3 = "2.10.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -58,19 +61,21 @@ coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 # Image Loading
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
-# Enro Navigation
-enro-core = { group = "dev.enro", name = "enro", version.ref = "enro" }
-enro-processor = { group = "dev.enro", name = "enro-processor", version.ref = "enro" }
-enro-test = { group = "dev.enro", name = "enro-test", version.ref = "enro" }
-
 # Koin
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-bom" }
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-bom" }
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin-bom" }
-koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin-bom" }
-koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin-bom" }
-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin-bom" }
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-compose = { module = "io.insert-koin:koin-compose" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
+koin-ktor = { module = "io.insert-koin:koin-ktor" }
+koin-test = { module = "io.insert-koin:koin-test" }
+koin-compose-navigation3 = { module = "io.insert-koin:koin-compose-navigation3", version.ref = "koin-bom" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
+
+# Core Navigation 3 libraries
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
+androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -78,3 +83,4 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 android-library = { id = "com.android.library", version.ref = "agp" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization"}

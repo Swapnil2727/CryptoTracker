@@ -5,9 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.app.domain.model.Result
 import com.app.domain.repository.CryptoRepository
 import com.app.presentation.model.CryptoDetailState
-import com.app.presentation.ui.cryptodetail.CryptoDetailDestination
-import dev.enro.core.close
-import dev.enro.viewmodel.navigationHandle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,10 +20,9 @@ import kotlinx.coroutines.launch
  * - Survive configuration changes
  */
 class CryptoDetailViewModel(
+    val cryptoId: String,
     private val cryptoRepository: CryptoRepository,
 ) : ViewModel() {
-
-    private val navigation by navigationHandle<CryptoDetailDestination>()
 
     // Private mutable state
     private val _state = MutableStateFlow<CryptoDetailState>(CryptoDetailState.Loading)
@@ -44,7 +40,7 @@ class CryptoDetailViewModel(
      */
     private fun loadCryptoDetail() {
         viewModelScope.launch {
-            cryptoRepository.getCryptoCurrencyById(navigation.key.cryptoId).collect { result ->
+            cryptoRepository.getCryptoCurrencyById(cryptoId).collect { result ->
                 _state.value = when (result) {
                     is Result.Loading -> CryptoDetailState.Loading
 
@@ -63,9 +59,5 @@ class CryptoDetailViewModel(
      */
     fun onRetry() {
         loadCryptoDetail()
-    }
-
-    fun onBackClick() {
-        navigation.close()
     }
 }
