@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
 }
 
 android {
@@ -45,14 +44,15 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(projects.domain)
-    // hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
 
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
+    // Koin
+    implementation(libs.koin.android)
+    implementation(platform(libs.koin.bom))
 
     // Networking
     implementation(libs.moshi)

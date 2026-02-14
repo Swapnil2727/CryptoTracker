@@ -5,75 +5,76 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CryptoDTO(
-    @Json(name = "id")
+
+    @field:Json(name = "id")
     val id: String,
 
-    @Json(name = "symbol")
+    @field:Json(name = "symbol")
     val symbol: String,
 
-    @Json(name = "name")
+    @field:Json(name = "name")
     val name: String,
 
-    @Json(name = "image")
+    @field:Json(name = "image")
     val image: String,
 
-    @Json(name = "current_price")
-    val currentPrice: Double,
+    @field:Json(name = "current_price")
+    val currentPrice: Double?,
 
-    @Json(name = "price_change_percentage_24h")
-    val priceChangePercentage24h: Double,
+    @field:Json(name = "price_change_percentage_24h")
+    val priceChangePercentage24h: Double?,
 
-    @Json(name = "market_cap")
-    val marketCap: Long,
+    @field:Json(name = "market_cap")
+    val marketCap: Double?,
 
-    @Json(name = "market_cap_rank")
-    val marketCapRank: Int,
+    @field:Json(name = "market_cap_rank")
+    val marketCapRank: Int?,
 
-    @Json(name = "total_volume")
-    val totalVolume: Long,
+    @field:Json(name = "total_volume")
+    val totalVolume: Double?,
 
-    @Json(name = "high_24h")
-    val high24h: Double,
+    @field:Json(name = "high_24h")
+    val high24h: Double?,
 
-    @Json(name = "low_24h")
-    val low24h: Double,
+    @field:Json(name = "low_24h")
+    val low24h: Double?,
 
-    @Json(name = "price_change_24h")
-    val priceChange24h: Double,
+    @field:Json(name = "price_change_24h")
+    val priceChange24h: Double?,
 
-    @Json(name = "market_cap_change_24h")
-    val marketCapChange24h: Long,
+    @field:Json(name = "market_cap_change_24h")
+    val marketCapChange24h: Double?,
 
-    @Json(name = "market_cap_change_percentage_24h")
-    val marketCapChangePercentage24h: Double,
+    @field:Json(name = "market_cap_change_percentage_24h")
+    val marketCapChangePercentage24h: Double?,
 
-    @Json(name = "circulating_supply")
-    val circulatingSupply: Double,
+    @field:Json(name = "circulating_supply")
+    val circulatingSupply: Double?,
 
-    @Json(name = "total_supply")
+    @field:Json(name = "total_supply")
     val totalSupply: Double?,
 
-    @Json(name = "max_supply")
+    @field:Json(name = "max_supply")
     val maxSupply: Double?,
 
-    @Json(name = "ath")
-    val ath: Double,
+    @field:Json(name = "ath")
+    val ath: Double?,
 
-    @Json(name = "ath_change_percentage")
-    val athChangePercentage: Double,
+    @field:Json(name = "ath_change_percentage")
+    val athChangePercentage: Double?,
 
-    @Json(name = "ath_date")
-    val athDate: String,
+    @field:Json(name = "ath_date")
+    val athDate: String?,
 
-    @Json(name = "atl")
-    val atl: Double,
+    @field:Json(name = "atl")
+    val atl: Double?,
 
-    @Json(name = "atl_change_percentage")
-    val atlChangePercentage: Double,
+    @field:Json(name = "atl_change_percentage")
+    val atlChangePercentage: Double?,
 
-    @Json(name = "atl_date")
-    val atlDate: String,
+    @field:Json(name = "atl_date")
+    val atlDate: String?,
 
-    @Json(name = "last_updated")
-    val lastUpdated: String
+    @field:Json(name = "last_updated")
+    val lastUpdated: String?
 )

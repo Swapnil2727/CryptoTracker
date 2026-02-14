@@ -1,17 +1,14 @@
 package com.app.presentation.viewmodel.cryptodetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.domain.model.Result
 import com.app.domain.repository.CryptoRepository
 import com.app.presentation.model.CryptoDetailState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * ViewModel for the Crypto Detail screen.
@@ -22,13 +19,10 @@ import javax.inject.Inject
  * - Handle user actions (retry)
  * - Survive configuration changes
  */
-@HiltViewModel
-class CryptoDetailViewModel @Inject constructor(
+class CryptoDetailViewModel(
+    val cryptoId: String,
     private val cryptoRepository: CryptoRepository,
-    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-
-    // Extract cryptoId from navigation arguments
 
     // Private mutable state
     private val _state = MutableStateFlow<CryptoDetailState>(CryptoDetailState.Loading)
@@ -46,7 +40,7 @@ class CryptoDetailViewModel @Inject constructor(
      */
     private fun loadCryptoDetail() {
         viewModelScope.launch {
-            cryptoRepository.getCryptoCurrencyById("").collect { result ->
+            cryptoRepository.getCryptoCurrencyById(cryptoId).collect { result ->
                 _state.value = when (result) {
                     is Result.Loading -> CryptoDetailState.Loading
 

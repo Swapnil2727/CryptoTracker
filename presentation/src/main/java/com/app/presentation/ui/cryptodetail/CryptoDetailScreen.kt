@@ -13,11 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.presentation.R
 import com.app.presentation.model.CryptoDetailState
 import com.app.presentation.viewmodel.cryptodetail.CryptoDetailViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 /**
  * Detail screen showing comprehensive information about a single cryptocurrency.
@@ -33,9 +33,8 @@ import com.app.presentation.viewmodel.cryptodetail.CryptoDetailViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CryptoDetailScreen(
-    cryptoId: String,
-    onNavigateBack: () -> Unit,
-    viewModel: CryptoDetailViewModel = hiltViewModel()
+    viewModel: CryptoDetailViewModel = koinViewModel(),
+    onBackClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -44,11 +43,10 @@ fun CryptoDetailScreen(
             TopAppBar(
                 title = { Text("Crypto Details") },
                 navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
+                    IconButton(onClick = onBackClick) {
                         Icon(
                             painter = painterResource(R.drawable.arrow_back),
                             contentDescription = "Navigate back"
-
                         )
                     }
                 },

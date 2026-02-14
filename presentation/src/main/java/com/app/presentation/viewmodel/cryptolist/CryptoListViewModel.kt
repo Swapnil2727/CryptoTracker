@@ -5,12 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.app.domain.model.Result
 import com.app.domain.repository.CryptoRepository
 import com.app.presentation.model.CryptoListState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * ViewModel for the Crypto List screen.
@@ -21,8 +19,8 @@ import javax.inject.Inject
  * - Handle user actions (refresh, retry)
  * - Survive configuration changes (screen rotation)
  */
-@HiltViewModel
-class CryptoListViewModel @Inject constructor(
+
+class CryptoListViewModel(
     private val cryptoRepository: CryptoRepository,
 ) : ViewModel() {
 

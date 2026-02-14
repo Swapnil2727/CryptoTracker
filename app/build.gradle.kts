@@ -4,7 +4,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -36,7 +37,8 @@ android {
                 localProperties.load(stream)
             }
         }
-        val apiKey = localProperties.getProperty("COINGECKO_API_KEY") ?: throw Exception ("Api key not provied")
+        val apiKey = localProperties.getProperty("COINGECKO_API_KEY")
+            ?: throw Exception("Api key not provied")
         buildConfigField("String", "COINGECKO_API_KEY", "\"$apiKey\"")
     }
 
@@ -72,12 +74,19 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    //hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    // Koin
+    implementation(libs.koin.android)
+    implementation(platform(libs.koin.bom))
 
     // domain, data, presentation
     implementation(projects.data)
     implementation(projects.domain)
     implementation(projects.presentation)
+
+    // Navigation
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.koin.compose.navigation3)
 }
