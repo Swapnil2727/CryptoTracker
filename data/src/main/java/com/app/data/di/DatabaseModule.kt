@@ -13,7 +13,7 @@ val databaseModule = module {
             CryptoDatabase::class.java,
             CryptoDatabase.DATABASE_NAME
         )
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration(false)
             .build()
     }
 
