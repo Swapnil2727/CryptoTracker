@@ -37,8 +37,7 @@ android {
                 localProperties.load(stream)
             }
         }
-        val apiKey = localProperties.getProperty("COINGECKO_API_KEY")
-            ?: throw Exception("Api key not provied")
+        val apiKey = localProperties.getProperty("COINGECKO_API_KEY") ?: ""
         buildConfigField("String", "COINGECKO_API_KEY", "\"$apiKey\"")
     }
 
