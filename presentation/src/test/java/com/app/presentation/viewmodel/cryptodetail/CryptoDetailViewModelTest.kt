@@ -113,7 +113,7 @@ class CryptoDetailViewModelTest {
 
         viewModel = CryptoDetailViewModel("ethereum", repository)
 
-        assertEquals("ethereu", viewModel.cryptoId)
+        assertEquals("ethereum", viewModel.cryptoId)
     }
 }
 
