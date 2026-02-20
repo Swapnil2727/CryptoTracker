@@ -34,6 +34,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    testOptions {
+        //noinspection WrongGradleMethod
+        screenshotTests {
+            imageDifferenceThreshold = 0.0001f // 0.01%
+        }
+    }
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }
 
