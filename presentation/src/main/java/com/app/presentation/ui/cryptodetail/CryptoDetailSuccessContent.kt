@@ -99,7 +99,7 @@ internal fun CryptoDetailSuccessContent(
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
-private fun CryptoDetailSuccessContentPreview() {
+internal fun CryptoDetailSuccessContentPreview() {
     MaterialTheme {
         CryptoDetailSuccessContent(crypto = previewBitcoin)
     }

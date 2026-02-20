@@ -144,7 +144,7 @@ private fun LoadingContent(modifier: Modifier = Modifier) {
  * Success state - shows list of cryptocurrencies with pull-to-refresh (Material 3)
  */
 @Composable
-private fun CryptoListContent(
+internal fun CryptoListContent(
     cryptos: List<CryptoCurrency>,
     isRefreshing: Boolean,
     onRefresh: () -> Unit,
@@ -368,7 +368,7 @@ private fun formatPrice(price: Double): String {
 
 @Composable
 @PreviewScreenSizes
-private fun CryptoListContentPreview() {
+internal fun CryptoListContentPreview() {
     CryptoTrackerTheme {
         CryptoListContent(
             cryptos = previewCryptoList,
