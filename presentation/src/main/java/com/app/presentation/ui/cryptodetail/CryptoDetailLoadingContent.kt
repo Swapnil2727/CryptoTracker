@@ -43,7 +43,7 @@ fun LoadingContent(modifier: Modifier = Modifier) {
 
 @Preview(name = "Loading State", showBackground = true)
 @Composable
-private fun LoadingContentPreview() {
+internal fun LoadingContentPreview() {
     MaterialTheme {
         LoadingContent()
     }

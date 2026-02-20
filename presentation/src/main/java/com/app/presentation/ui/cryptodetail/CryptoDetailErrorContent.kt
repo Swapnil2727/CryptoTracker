@@ -88,7 +88,7 @@ internal fun ErrorContent(
 
 @Preview(name = "Error State", showBackground = true)
 @Composable
-private fun ErrorContentPreview() {
+internal fun ErrorContentPreview() {
     MaterialTheme {
         ErrorContent(
             message = "Failed to load cryptocurrency details. Please try again.",
