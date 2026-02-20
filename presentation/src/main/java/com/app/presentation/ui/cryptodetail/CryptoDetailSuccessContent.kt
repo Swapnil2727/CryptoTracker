@@ -48,7 +48,7 @@ internal fun CryptoDetailSuccessContent(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .verticalScroll(rememberScrollState())
-            .padding(16.dp),
+            .padding(64.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // Header Section
