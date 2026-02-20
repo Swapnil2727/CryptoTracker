@@ -86,7 +86,7 @@ Room acts as the single source of truth. On launch, cached data is emitted immed
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/CryptoTracker.git
+git clone https://github.com/Swapnil2727/CryptoTracker.git
 cd CryptoTracker
 ```
 
