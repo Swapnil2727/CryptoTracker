@@ -158,7 +158,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add presentation/src/screenshotTest/
+          git add presentation/src/screenshotTest/ presentation/src/screenshotTestDebug/
           git diff --staged --quiet && echo "No baseline changes." || (
             git commit -m "chore: update screenshot baselines [skip ci]" &&
             git push
