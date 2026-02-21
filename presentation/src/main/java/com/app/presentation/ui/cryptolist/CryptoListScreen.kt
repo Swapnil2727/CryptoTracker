@@ -359,9 +359,9 @@ private fun ErrorContent(
  */
 private fun formatPrice(price: Double): String {
     return when {
-        price >= 1000 -> String.format(Locale.US, "%,.0f", price)
+        price >= THOUSAND -> String.format(Locale.US, "%,.0f", price)
         price >= 1 -> String.format(Locale.US, "%.2f", price)
-        price >= 0.01 -> String.format(Locale.US, "%.4f", price)
+        price >= SMALL_PRICE_THRESHOLD -> String.format(Locale.US, "%.4f", price)
         else -> String.format(Locale.US, "%.6f", price)
     }
 }
@@ -378,3 +378,6 @@ internal fun CryptoListContentPreview() {
         )
     }
 }
+
+private const val THOUSAND = 1_000.0
+private const val SMALL_PRICE_THRESHOLD = 0.01

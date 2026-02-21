@@ -26,6 +26,7 @@ kotlinxCoroutinesTest = "1.7.3"
 mockk = "1.13.8"
 turbine = "1.0.0"
 screenshot = "0.0.1-alpha13"
+detekt = "1.23.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -96,3 +97,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization"}
 screenshot = { id = "com.android.compose.screenshot", version.ref = "screenshot"}
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
