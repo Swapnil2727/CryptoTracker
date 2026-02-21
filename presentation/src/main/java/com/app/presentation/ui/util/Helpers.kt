@@ -3,22 +3,21 @@ package com.app.presentation.ui.util
 import java.text.NumberFormat
 import java.util.Locale
 
-
 /**
  * Format currency values with proper formatting
  */
 internal fun formatCurrency(value: Double): String {
     val formatter = NumberFormat.getCurrencyInstance(Locale.US)
     return when {
-        value >= 1_000_000_000 -> {
-            formatter.format(value / 1_000_000_000) + "B"
+        value >= BILLION -> {
+            formatter.format(value / BILLION) + "B"
         }
 
-        value >= 1_000_000 -> {
-            formatter.format(value / 1_000_000) + "M"
+        value >= MILLION -> {
+            formatter.format(value / MILLION) + "M"
         }
 
-        value >= 1000 -> {
+        value >= THOUSAND -> {
             formatter.format(value)
         }
 
@@ -26,7 +25,7 @@ internal fun formatCurrency(value: Double): String {
             String.format(Locale.US, "$%.2f", value)
         }
 
-        value >= 0.01 -> {
+        value >= SMALL_VALUE_THRESHOLD -> {
             String.format(Locale.US, "$%.4f", value)
         }
 
@@ -41,9 +40,9 @@ internal fun formatCurrency(value: Double): String {
  */
 internal fun formatNumber(value: Double): String {
     return when {
-        value >= 1_000_000_000 -> String.format(Locale.US, "%.2fB", value / 1_000_000_000)
-        value >= 1_000_000 -> String.format(Locale.US, "%.2fM", value / 1_000_000)
-        value >= 1_000 -> String.format(Locale.US, "%,.0f", value)
+        value >= BILLION -> String.format(Locale.US, "%.2fB", value / BILLION)
+        value >= MILLION -> String.format(Locale.US, "%.2fM", value / MILLION)
+        value >= THOUSAND -> String.format(Locale.US, "%,.0f", value)
         else -> String.format(Locale.US, "%.2f", value)
     }
 }
@@ -59,3 +58,8 @@ internal fun formatDate(isoDate: String): String {
         isoDate
     }
 }
+
+private const val BILLION = 1_000_000_000.0
+private const val MILLION = 1_000_000.0
+private const val THOUSAND = 1_000.0
+private const val SMALL_VALUE_THRESHOLD = 0.01

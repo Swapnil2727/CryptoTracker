@@ -1,5 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.detekt)
+}
+
+detekt {
+    config.setFrom("$rootDir/config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
+    autoCorrect = false
 }
 
 android {

@@ -9,7 +9,7 @@ import com.app.presentation.viewmodel.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class CryptoTrackerApp() : Application() {
+class CryptoTrackerApp : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
